@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "peelback"
+version = "0.1.0"
+description = "Recursively peel base64, hex, gzip, URL and JWT layers off an opaque token — auto-detected, confidence-scored, offline."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "JaydenCJ" }]
+keywords = ["base64", "hex", "gzip", "jwt", "token", "decoder", "encoding", "debugging"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+peelback = "peelback.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/JaydenCJ/peelback"
+Repository = "https://github.com/JaydenCJ/peelback"
+Issues = "https://github.com/JaydenCJ/peelback/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src", "tests"]

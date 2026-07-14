@@ -1,0 +1,24 @@
+# Sample tokens for trying peelback by hand.
+# Lines starting with '#' are comments; every other line is one token.
+# Try:  peelback "$(sed -n 6p examples/sample-tokens.txt)"
+
+# 1. base64(JSON) — the classic "opaque" cookie value.
+eyJ1c2VyIjoiYW1hcmEiLCJyb2xlcyI6WyJhZG1pbiIsIm9wcyJdfQ==
+
+# 2. hex(JSON) with a 0x prefix — common in debugging dumps.
+0x7b226964223a20343831322c20226f6b223a20747275657d
+
+# 3. url(base64) — what a query parameter does to padding.
+eyJzdGF0ZSI6InJldHVybi10by1kYXNoYm9hcmQifQ%3D%3D
+
+# 4. An HS256 JWT (signed with the throwaway key "sample-secret").
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2F1dGguZXhhbXBsZS50ZXN0Iiwic3ViIjoidXNlci00ODIxIiwiaWF0IjoxNzAwMDAwMDAwLCJleHAiOjMyNTAzNjgwMDAwfQ.cE_Z1kMesuVg-Usq1PSMGOLqPzD-F_SEcdcRx6pW5s8
+
+# 5. data: URI with a base64 body.
+data:application/json;base64,eyJmZWF0dXJlIjoiZGFyay1tb2RlIiwib24iOnRydWV9
+
+# 6. base32 — rarer, but it shows the payload-bonus scoring at work.
+OR3DULZPNZQW2ZLTFZSXQYLNOBWGKLTUMVZXI===
+
+# 7. Plain text — peelback refuses to "decode" this (exit code 1).
+just an ordinary string, nothing to peel

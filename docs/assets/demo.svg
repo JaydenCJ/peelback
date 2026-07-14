@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="518" viewBox="0 0 760 518" font-family="Menlo, Consolas, monospace" font-size="13.5">
+  <rect width="760" height="518" rx="10" fill="#101418"/>
+  <circle cx="24" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="22" r="6" fill="#27c93f"/>
+  <text x="380" y="27" fill="#8b949e" text-anchor="middle" font-size="12">peelback — peel every encoding layer off an opaque token</text>
+  <g fill="#c9d1d9">
+    <text x="22" y="60"><tspan fill="#7ee787">$</tspan> peelback <tspan fill="#8b949e">"H4sIAAAAAAACA6tWKi1OLVKyUlBKzE0sSlTSUVAqys9JLQaKRCsl…%3D"</tspan></text>
+    <text x="22" y="90" font-weight="bold">peelback · peeled 3 layers · input 122 B</text>
+    <text x="22" y="118">#0 · <tspan fill="#8b949e">input</tspan> · 122 B</text>
+    <text x="22" y="140">└─ #1 · <tspan fill="#56d4dd">url-encoding</tspan> · 120 B · <tspan fill="#8b949e">(0.85)</tspan></text>
+    <text x="22" y="162">   <tspan fill="#e3b341">· 1 percent escape(s)</tspan></text>
+    <text x="22" y="184">   └─ #2 · <tspan fill="#56d4dd">base64url</tspan> · 89 B · <tspan fill="#8b949e">(0.99)</tspan></text>
+    <text x="22" y="206">      └─ #3 · <tspan fill="#56d4dd">gzip</tspan> · <tspan fill="#7ee787">json</tspan> · 79 B · <tspan fill="#8b949e">(0.99)</tspan></text>
+    <text x="22" y="228" fill="#8b949e">         {</text>
+    <text x="22" y="250" fill="#8b949e">           "roles": [</text>
+    <text x="22" y="272" fill="#8b949e">             "admin",</text>
+    <text x="22" y="294" fill="#8b949e">             "ops"</text>
+    <text x="22" y="316" fill="#8b949e">           ],</text>
+    <text x="22" y="338" fill="#8b949e">           "salt": 0,</text>
+    <text x="22" y="360" fill="#8b949e">           "session": "9f8a-77c2",</text>
+    <text x="22" y="382" fill="#8b949e">           "user": "amara"</text>
+    <text x="22" y="404" fill="#8b949e">         }</text>
+    <text x="22" y="440"><tspan fill="#7ee787">$</tspan> peelback --extract <tspan fill="#8b949e">"$TOKEN"</tspan> | jq .user   <tspan fill="#6e7681"># raw innermost bytes</tspan></text>
+    <text x="22" y="462" fill="#7ee787">"amara"</text>
+    <text x="22" y="492"><tspan fill="#7ee787">$</tspan> peelback --json <tspan fill="#8b949e">"$TOKEN"</tspan>   <tspan fill="#6e7681"># the full trace, machine-readable</tspan></text>
+  </g>
+</svg>
